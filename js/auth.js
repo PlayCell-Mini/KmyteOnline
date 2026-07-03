@@ -68,6 +68,18 @@ async function signupUser(e) {
 
     const button = document.querySelector(".auth-btn");
 
+/* ==========================================================
+   LOGIN FORM
+========================================================== */
+
+    const loginForm = document.getElementById("loginForm");
+
+    if (loginForm) {
+
+        loginForm.addEventListener("submit", loginUser);
+
+    }
+
     /* =====================
        VALIDATION
     ===================== */
