@@ -350,4 +350,5 @@ export function checkAuthState(callback){
 
     });
 
+    
 }
