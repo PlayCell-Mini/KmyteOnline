@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>KMYTE Online Setup</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <style>
+
+        body{
+
+            font-family:Poppins,sans-serif;
+
+            background:#f5f6fa;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            min-height:100vh;
+
+        }
+
+        .setup-card{
+
+            width:500px;
+
+            background:#fff;
+
+            border-radius:20px;
+
+            padding:40px;
+
+            box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+            text-align:center;
+
+        }
+
+        .setup-card img{
+
+            width:160px;
+
+            margin-bottom:25px;
+
+        }
+
+        .setup-card h2{
+
+            margin-bottom:15px;
+
+            color:#6C2BD9;
+
+        }
+
+        .setup-card p{
+
+            color:#666;
+
+            margin-bottom:30px;
+
+        }
+
+        button{
+
+            width:100%;
+
+            padding:16px;
+
+            border:none;
+
+            border-radius:12px;
+
+            background:#6C2BD9;
+
+            color:#fff;
+
+            font-size:16px;
+
+            cursor:pointer;
+
+        }
+
+        button:hover{
+
+            opacity:.95;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="setup-card">
+
+    <img src="images/logo.png"
+         alt="Logo">
+
+    <h2>
+
+        KMYTE Online Installer
+
+    </h2>
+
+    <p>
+
+        Click the button below to initialize your Firebase database.
+
+    </p>
+
+    <button id="setupBtn">
+
+        Initialize Project
+
+    </button>
+
+</div>
+
+<script type="module"
+        src="js/setup.js"></script>
+
+</body>
+
+</html>
