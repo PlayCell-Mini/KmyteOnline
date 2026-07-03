@@ -19,6 +19,7 @@ import {
 
 import {
     doc,
+    getDoc,
     setDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
@@ -283,9 +284,6 @@ async function loginUser(e){
 
         resetButton(button);
 
-        showMessage("Login Successful!");
-
-        window.location.href="dashboard.html";
 
     }
 
