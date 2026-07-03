@@ -284,6 +284,33 @@ async function loginUser(e){
 
         resetButton(button);
 
+    const user = auth.currentUser;
+
+    const userRef = doc(db, "users", user.uid);
+
+    const userSnap = await getDoc(userRef);
+
+    if (!userSnap.exists()) {
+
+        showMessage("User data not found.");
+
+        return;
+
+    }
+
+    const userData = userSnap.data();
+
+    showMessage("Login Successful!");
+
+    if (userData.role === "admin") {
+
+        window.location.href = "admin.html";
+
+    } else {
+
+        window.location.href = "dashboard.html";
+
+    }
 
     }
 
