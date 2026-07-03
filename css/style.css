@@ -745,3 +745,87 @@ footer{
     }
 
 }
+
+/* ==========================================================
+   HOW IT WORKS
+========================================================== */
+
+.steps-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.step-card{
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.step-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.step-number{
+
+    width:70px;
+
+    height:70px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.step-card h3{
+
+    margin-bottom:15px;
+
+    color:var(--primary);
+
+}
+
+@media(max-width:992px){
+
+    .steps-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .steps-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
