@@ -4,9 +4,7 @@
 ========================================================== */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 /* ==========================================================
@@ -17,20 +15,20 @@ const firebaseConfig = {
 
     apiKey: "AIzaSyBUeWih6FR4brqc8mmNgqCv7blhN2s-t4w",
 
-    authDomain: "YOUR_AUTH_DOMAIN",
+    authDomain: "kmyteonline.firebaseapp.com",
 
-    projectId: "YOUR_PROJECT_ID",
+    projectId: "kmyteonline",
 
-    storageBucket: "YOUR_STORAGE_BUCKET",
+    storageBucket: "kmyteonline.firebasestorage.app",
 
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    messagingSenderId: "732800529865",
 
-    appId: "YOUR_APP_ID"
+    appId: "1:732800529865:web:660adf6e9288243bf8a418"
 
 };
 
 /* ==========================================================
-   INITIALIZE
+   INITIALIZE FIREBASE
 ========================================================== */
 
 const app = initializeApp(firebaseConfig);
@@ -40,7 +38,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 /* ==========================================================
-   EXPORTS
+   EXPORT SERVICES
 ========================================================== */
 
 export {
