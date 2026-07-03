@@ -219,5 +219,4 @@ async function signupUser(e) {
 
     }
 
-    
 }
