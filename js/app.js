@@ -16,12 +16,11 @@ import { app, auth, db } from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("====================================");
-    console.log("KMYTE Online");
-    console.log("Application Started Successfully");
-    console.log("====================================");
+    console.log("======================================");
+    console.log("      KMYTE ONLINE");
+    console.log("======================================");
 
-    initializeApp();
+    initializeApplication();
 
 });
 
@@ -29,12 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
    INITIALIZE APPLICATION
 ========================================================== */
 
-function initializeApp(){
+function initializeApplication() {
 
-    console.log("Firebase Connected Successfully");
+    console.log("✅ Application Started Successfully");
 
-    console.log(app);
-    console.log(auth);
-    console.log(db);
+    console.log("Firebase App:", app);
+
+    console.log("Firebase Auth:", auth);
+
+    console.log("Firestore Database:", db);
 
 }
