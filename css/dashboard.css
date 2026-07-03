@@ -1,0 +1,237 @@
+/* ==========================================================
+   KMYTE Online
+   Dashboard Styles
+   Version: 1.0.0
+========================================================== */
+
+/* ==========================================================
+   DASHBOARD LAYOUT
+========================================================== */
+
+.dashboard{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:#f6f7fb;
+
+}
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+.sidebar{
+
+    width:270px;
+
+    background:#ffffff;
+
+    border-right:1px solid #ececec;
+
+    padding:30px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.sidebar-logo{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.sidebar-logo img{
+
+    width:170px;
+
+}
+
+.sidebar nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.sidebar nav a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.sidebar nav a:hover{
+
+    background:rgba(108,43,217,.08);
+
+    color:#6C2BD9;
+
+}
+
+.sidebar nav a.active{
+
+    background:#6C2BD9;
+
+    color:#ffffff;
+
+}
+
+/* ==========================================================
+   MAIN CONTENT
+========================================================== */
+
+.main-content{
+
+    flex:1;
+
+    padding:35px;
+
+}
+
+/* ==========================================================
+   TOPBAR
+========================================================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.topbar h2{
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   DASHBOARD GRID
+========================================================== */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.dashboard-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.dashboard-card h3{
+
+    font-size:16px;
+
+    color:#777;
+
+    margin-bottom:15px;
+
+}
+
+.dashboard-card h1{
+
+    font-size:34px;
+
+    color:#6C2BD9;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:1200px){
+
+    .dashboard-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .dashboard{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        border-right:none;
+
+        border-bottom:1px solid #ececec;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .main-content{
+
+        padding:20px;
+
+    }
+
+}
