@@ -235,3 +235,93 @@ async function signupUser(e) {
     }
 
 }
+
+/* ==========================================================
+   LOGIN USER
+========================================================== */
+
+async function loginUser(e){
+
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+
+    const password = document.getElementById("loginPassword").value;
+
+    const button = document.querySelector(".auth-btn");
+
+    if(!isValidEmail(email)){
+
+        showMessage("Please enter a valid email.");
+
+        return;
+
+    }
+
+    if(password.length < 6){
+
+        showMessage("Invalid password.");
+
+        return;
+
+    }
+
+    try{
+
+        setButtonLoading(button,"Logging In...");
+
+        await signInWithEmailAndPassword(
+
+            auth,
+
+            email,
+
+            password
+
+        );
+
+        resetButton(button);
+
+        showMessage("Login Successful!");
+
+        window.location.href="dashboard.html";
+
+    }
+
+    catch(error){
+
+        resetButton(button);
+
+        console.error(error);
+
+        showMessage(error.message);
+
+    }
+
+}
+
+/* ==========================================================
+   LOGOUT
+========================================================== */
+
+export async function logoutUser(){
+
+    await signOut(auth);
+
+    window.location.href="login.html";
+
+}
+
+/* ==========================================================
+   AUTH STATE
+========================================================== */
+
+export function checkAuthState(callback){
+
+    onAuthStateChanged(auth,(user)=>{
+
+        callback(user);
+
+    });
+
+}
