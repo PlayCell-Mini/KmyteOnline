@@ -94,8 +94,15 @@ if (payNowBtn) {
 
     payNowBtn.addEventListener("click", () => {
 
-        window.location.href =
-            `payment.html?id=${paymentId}`;
+        if (!currentPaymentId) {
+
+            alert("Payment not found.");
+
+            return;
+
+        }
+
+        window.location.href = `payment.html?id=${currentPaymentId}`;
 
     });
 
