@@ -97,7 +97,7 @@ async function loadWithdrawals() {
             `;
 
         });
-
+        attachEvents();
     }
 
     catch(error){
