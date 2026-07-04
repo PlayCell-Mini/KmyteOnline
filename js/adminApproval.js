@@ -30,6 +30,9 @@ async function loadPayments() {
 
     const snapshot = await getDocs(q);
 
+    console.log("Documents Found:", snapshot.size);
+
+
     if (snapshot.empty) {
 
         tbody.innerHTML = `
