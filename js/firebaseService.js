@@ -129,3 +129,52 @@ export async function getUserPayments(uid){
     }));
 
 }
+
+
+/* ==========================================================
+   GENERATE PAYMENTS
+========================================================== */
+
+export async function generatePayments(uid, subscriptionId, planDays, dailyAmount){
+
+    const payments = [];
+
+    for(let day = 1; day <= planDays; day++){
+
+        payments.push(
+
+            addDoc(
+
+                collection(db,"payments"),
+
+                {
+
+                    uid,
+
+                    subscriptionId,
+
+                    day,
+
+                    amount: dailyAmount,
+
+                    status: "pending",
+
+                    unlocked: day === 1,
+
+                    paid: false,
+
+                    approved: false,
+
+                    createdAt: serverTimestamp()
+
+                }
+
+            )
+
+        );
+
+    }
+
+    await Promise.all(payments);
+
+}
