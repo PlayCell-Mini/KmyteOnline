@@ -131,7 +131,33 @@ function attachEvents(){
                     }
 
                 );
+                const paymentSnap = await getDoc(doc(db, "payments", paymentId));
 
+                const payment = paymentSnap.data();
+
+                const nextQuery = query(
+                    collection(db, "payments"),
+                    where("subscriptionId", "==", payment.subscriptionId),
+                    where("day", "==", payment.day + 1)
+                );
+
+                const nextSnapshot = await getDocs(nextQuery);
+
+                if (!nextSnapshot.empty) {
+
+                    await updateDoc(
+
+                        doc(db, "payments", nextSnapshot.docs[0].id),
+
+                        {
+
+                            unlocked: true
+
+                        }
+
+                    );
+
+                }
                 alert("Payment Approved Successfully.");
 
                 loadPayments();
