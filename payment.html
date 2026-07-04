@@ -19,26 +19,50 @@
 
     <h1>Submit Today's Payment</h1>
 
-    <p id="paymentAmount">
+    <div class="payment-card">
 
-        Loading...
+        <h2 id="paymentAmount">
+            Loading...
+        </h2>
 
-    </p>
+        <label>Payment Method</label>
 
-    <input
-        type="file"
-        id="paymentScreenshot"
-        accept="image/*">
+        <select id="paymentMethod">
 
-    <button id="submitPaymentBtn">
+            <option value="JazzCash">JazzCash</option>
 
-        Submit Payment
+            <option value="EasyPaisa">EasyPaisa</option>
 
-    </button>
+            <option value="Bank Transfer">Bank Transfer</option>
+
+        </select>
+
+        <label>Transaction ID</label>
+
+        <input
+            type="text"
+            id="transactionId"
+            placeholder="Enter Transaction ID">
+
+        <label>Payment Screenshot</label>
+
+        <input
+            type="file"
+            id="paymentScreenshot"
+            accept="image/*">
+
+        <button id="submitPaymentBtn">
+
+            Submit Payment
+
+        </button>
+
+    </div>
 
 </div>
 
-<script type="module" src="js/paymentSubmit.js"></script>
+<script type="module"
+        src="js/paymentSubmit.js"></script>
 
 </body>
 
