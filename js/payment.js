@@ -91,7 +91,8 @@ if (payNowBtn) {
 
     payNowBtn.addEventListener("click", () => {
 
-        window.location.href = "payment.html";
+        window.location.href =
+            `payment.html?id=${paymentId}`;
 
     });
 
