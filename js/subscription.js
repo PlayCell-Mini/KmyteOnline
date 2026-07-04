@@ -3,11 +3,17 @@
    Subscription Module
 ========================================================== */
 
-import { db } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 
 import {
     doc,
-    getDoc
+    getDoc,
+    collection,
+    addDoc,
+    query,
+    where,
+    getDocs,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 async function loadPlans(){
