@@ -15,7 +15,11 @@ import {
     addDoc,
     serverTimestamp,
     updateDoc,
-    increment
+    increment,
+    query,
+    where,
+    getDocs,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 let currentUser = null;
