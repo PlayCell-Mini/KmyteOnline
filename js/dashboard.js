@@ -211,7 +211,7 @@ async function loadSubscription(uid) {
             `Day ${subscription.currentDay} of ${subscription.plan}`;
 
     }
-
+    await loadWallet(uid);
 }
 
 /* ==========================================================
