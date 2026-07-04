@@ -1,6 +1,6 @@
 /* ==========================================================
    KMYTE Online
-   Dashboard Module
+   Dashboard
    Version : 1.0.0
 ========================================================== */
 
@@ -10,14 +10,17 @@
 
 import { auth, db } from "./firebase.js";
 
-import { logoutUser } from "./auth.js";
-
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import {
+    collection,
+    query,
+    where,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 /* ==========================================================
-   AUTH CHECK
+   DASHBOARD START
 ========================================================== */
 
 onAuthStateChanged(auth, async (user) => {
@@ -30,54 +33,48 @@ onAuthStateChanged(auth, async (user) => {
 
     }
 
-    try {
-
-        const userRef = doc(db, "users", user.uid);
-
-        const userSnap = await getDoc(userRef);
-
-        if (!userSnap.exists()) {
-
-            alert("User data not found.");
-
-            return;
-
-        }
-
-        const data = userSnap.data();
-
-        const welcomeText = document.getElementById("welcomeText");
-
-        if (welcomeText) {
-
-            welcomeText.innerHTML = `Welcome, ${data.fullName} 👋`;
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-    }
+    loadSubscription(user.uid);
 
 });
 
 /* ==========================================================
-   LOGOUT
+   LOAD SUBSCRIPTION
 ========================================================== */
 
-const logoutBtn = document.getElementById("logoutBtn");
+async function loadSubscription(uid) {
 
-if (logoutBtn) {
+    const q = query(
 
-    logoutBtn.addEventListener("click", async (e) => {
+        collection(db, "subscriptions"),
 
-        e.preventDefault();
+        where("uid", "==", uid),
 
-        await logoutUser();
+        where("status", "==", "active")
 
-    });
+    );
+
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+
+        document.getElementById("subscriptionSection").style.display = "block";
+
+        document.getElementById("activeSubscription").style.display = "none";
+
+        return;
+
+    }
+
+    const data = snapshot.docs[0].data();
+
+    document.getElementById("subscriptionSection").style.display = "none";
+
+    document.getElementById("activeSubscription").style.display = "block";
+
+    document.getElementById("activePlan").textContent =
+        `${data.plan} Days`;
+
+    document.getElementById("currentDay").textContent =
+        `${data.currentDay} / ${data.plan}`;
 
 }
