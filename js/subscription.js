@@ -6,6 +6,11 @@
 import { auth, db } from "./firebase.js";
 
 import {
+    createSubscription,
+    generatePayments
+} from "./firebaseService.js";
+
+import {
     doc,
     getDoc,
     collection,
