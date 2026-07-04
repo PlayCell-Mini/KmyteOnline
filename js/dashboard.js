@@ -119,6 +119,49 @@ async function loadSubscription(uid) {
 
     const subscription = snapshot.docs[0].data();
 
+
+    /* ==========================
+    LOAD TODAY PAYMENT
+    ========================== */
+
+    const paymentQuery = query(
+
+        collection(db, "payments"),
+
+        where("subscriptionId", "==", snapshot.docs[0].id),
+
+        where("unlocked", "==", true),
+
+        where("paid", "==", false)
+
+    );
+
+    const paymentSnapshot = await getDocs(paymentQuery);
+
+    if (!paymentSnapshot.empty) {
+
+        const payment = paymentSnapshot.docs[0].data();
+
+        const todayAmount = document.getElementById("todayAmount");
+
+        const paymentStatus = document.getElementById("paymentStatus");
+
+        if (todayAmount) {
+
+            todayAmount.textContent = `PKR ${payment.amount}`;
+
+        }
+
+        if (paymentStatus) {
+
+            paymentStatus.textContent = payment.status;
+
+        }
+
+    }
+
+
+    
     if (subscriptionSection)
         subscriptionSection.style.display = "none";
 
@@ -163,5 +206,5 @@ if (logoutBtn) {
 
     });
 
-    
+
 }
