@@ -203,6 +203,10 @@ async function loadSubscription(uid) {
 
         progressBar.value = progress;
 
+        console.log("Subscription Data:", subscription);
+        console.log("Plan =", subscription.plan);
+        console.log("Current Day =", subscription.currentDay);
+
         progressText.textContent =
             `Day ${subscription.currentDay} of ${subscription.plan}`;
 
