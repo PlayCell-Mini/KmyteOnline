@@ -54,6 +54,7 @@ async function loadPayments() {
         snapshot.forEach(docSnap => {
 
             const payment = docSnap.data();
+            
 
             tbody.innerHTML += `
 
