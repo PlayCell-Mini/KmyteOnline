@@ -156,6 +156,15 @@ async function submitWithdrawal(e) {
 async function loadHistory(uid) {
 
     const tbody = document.getElementById("withdrawHistoryBody");
+    console.log("Current UID:", uid);
+
+    console.log("Documents Found:", snapshot.size);
+
+    snapshot.forEach(doc => {
+
+        console.log(doc.id, doc.data());
+
+    });
 
     if (!tbody) return;
 
