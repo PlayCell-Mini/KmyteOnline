@@ -232,3 +232,53 @@ if (logoutBtn) {
 
 
 }
+
+
+/* ==========================================================
+   LOAD WALLET
+========================================================== */
+
+async function loadWallet(uid) {
+
+    try {
+
+        const userRef = doc(db, "users", uid);
+
+        const userSnap = await getDoc(userRef);
+
+        if (!userSnap.exists()) return;
+
+        const user = userSnap.data();
+
+        const earned =
+            user.wallet?.totalPaid || 0;
+
+        const balance =
+            user.wallet?.totalPending || 0;
+
+        const available =
+            user.wallet?.withdrawAvailable || false;
+
+        document.getElementById("walletEarned").textContent =
+            `PKR ${earned}`;
+
+        document.getElementById("walletBalance").textContent =
+            `PKR ${balance}`;
+
+        document.getElementById("withdrawStatus").textContent =
+            available ? "Available" : "Not Available";
+
+        const btn =
+            document.getElementById("withdrawBtn");
+
+        btn.disabled = !available;
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
