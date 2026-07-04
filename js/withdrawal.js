@@ -156,21 +156,14 @@ async function submitWithdrawal(e) {
 async function loadHistory(uid) {
 
     const tbody = document.getElementById("withdrawHistoryBody");
-    console.log("Current UID:", uid);
-
-    console.log("Documents Found:", snapshot.size);
-
-    snapshot.forEach(doc => {
-
-        console.log(doc.id, doc.data());
-
-    });
 
     if (!tbody) return;
 
     tbody.innerHTML = "";
 
     try {
+
+        console.log("Current UID:", uid);
 
         const q = query(
 
@@ -183,6 +176,14 @@ async function loadHistory(uid) {
         );
 
         const snapshot = await getDocs(q);
+
+        console.log("Documents Found:", snapshot.size);
+
+        snapshot.forEach(doc => {
+
+            console.log(doc.id, doc.data());
+
+        });
 
         if (snapshot.empty) {
 
@@ -232,7 +233,7 @@ async function loadHistory(uid) {
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(error);
 
