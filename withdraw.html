@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Withdrawal | KMYTE Online</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Withdrawal Request</h2>
+
+    <form id="withdrawForm">
+
+        <label>Payment Method</label>
+
+        <select id="method" required>
+
+            <option value="">Select</option>
+
+            <option>JazzCash</option>
+
+            <option>EasyPaisa</option>
+
+            <option>Bank Transfer</option>
+
+        </select>
+
+        <label>Account Title</label>
+
+        <input
+            type="text"
+            id="accountTitle"
+            required>
+
+        <label>Account Number</label>
+
+        <input
+            type="text"
+            id="accountNumber"
+            required>
+
+        <label>Amount</label>
+
+        <input
+            type="number"
+            id="amount"
+            required>
+
+        <button
+            type="submit">
+
+            Submit Withdrawal
+
+        </button>
+
+    </form>
+
+</div>
+
+<script type="module" src="js/withdrawal.js"></script>
+
+</body>
+
+</html>
