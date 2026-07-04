@@ -1,6 +1,7 @@
 /* ==========================================================
    KMYTE Online
    Admin Payment Approval
+   Version : 2.0.0
 ========================================================== */
 
 import { db } from "./firebase.js";
@@ -9,73 +10,142 @@ import {
     collection,
     query,
     where,
-    getDocs
+    getDocs,
+    doc,
+    updateDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const tbody = document.getElementById("paymentTableBody");
 
 loadPayments();
 
+/* ==========================================================
+   LOAD SUBMITTED PAYMENTS
+========================================================== */
+
 async function loadPayments() {
 
     tbody.innerHTML = "";
 
-    const snapshot = await getDocs(collection(db, "payments"));
+    try {
 
-    console.log("Documents Found:", snapshot.size);
+        const q = query(
+            collection(db, "payments"),
+            where("status", "==", "submitted")
+        );
 
-    snapshot.forEach((doc) => {
-        console.log(doc.id, doc.data());
-    });
+        const snapshot = await getDocs(q);
 
-    console.log("Documents Found:", snapshot.size);
+        if (snapshot.empty) {
 
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5">No submitted payments.</td>
+                </tr>
+            `;
 
-    if (snapshot.empty) {
+            return;
 
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="5">
-                    No submitted payments.
-                </td>
-            </tr>
-        `;
+        }
 
-        return;
+        snapshot.forEach(docSnap => {
+
+            const payment = docSnap.data();
+
+            tbody.innerHTML += `
+
+                <tr>
+
+                    <td>${payment.uid}</td>
+
+                    <td>PKR ${payment.amount}</td>
+
+                    <td>${payment.paymentMethod || "-"}</td>
+
+                    <td>${payment.transactionId || "-"}</td>
+
+                    <td>
+
+                        <button
+                            class="approve-btn"
+                            data-id="${docSnap.id}">
+
+                            Approve
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+        attachEvents();
 
     }
 
-    snapshot.forEach(docSnap => {
+    catch(error){
 
-        const payment = docSnap.data();
+        console.error(error);
 
-        tbody.innerHTML += `
+    }
 
-        <tr>
+}
 
-            <td>${payment.uid}</td>
+/* ==========================================================
+   APPROVE PAYMENT
+========================================================== */
 
-            <td>PKR ${payment.amount}</td>
+function attachEvents(){
 
-            <td>${payment.paymentMethod}</td>
+    document.querySelectorAll(".approve-btn").forEach(button=>{
 
-            <td>${payment.transactionId}</td>
+        button.addEventListener("click",async()=>{
 
-            <td>
+            const paymentId=button.dataset.id;
 
-                <button
-                    class="approve-btn"
-                    data-id="${docSnap.id}">
+            button.disabled=true;
 
-                    Approve
+            button.textContent="Approving...";
 
-                </button>
+            try{
 
-            </td>
+                await updateDoc(
 
-        </tr>
+                    doc(db,"payments",paymentId),
 
-        `;
+                    {
+
+                        status:"approved",
+
+                        approved:true,
+
+                        paid:true,
+
+                        approvedAt:serverTimestamp()
+
+                    }
+
+                );
+
+                alert("Payment Approved Successfully.");
+
+                loadPayments();
+
+            }
+
+            catch(error){
+
+                console.error(error);
+
+                alert(error.message);
+
+            }
+
+        });
 
     });
 
