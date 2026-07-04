@@ -282,3 +282,19 @@ async function loadWallet(uid) {
     }
 
 }
+
+/* ==========================================================
+   WITHDRAW BUTTON
+========================================================== */
+
+const withdrawBtn = document.getElementById("withdrawBtn");
+
+if (withdrawBtn) {
+
+    withdrawBtn.addEventListener("click", () => {
+
+        window.location.href = "withdrawal.html";
+
+    });
+
+}
