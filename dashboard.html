@@ -5,16 +5,13 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard | KMYTE Online</title>
 
-    <link rel="stylesheet"
-          href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet"
-          href="css/dashboard.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 
@@ -22,171 +19,196 @@
 
 <div class="dashboard">
 
-    <!-- Sidebar -->
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
 
     <aside class="sidebar">
 
         <div class="sidebar-logo">
 
-            <img src="images/logo.png"
-                 alt="Logo">
+            <img src="images/logo.png" alt="Logo">
 
         </div>
 
         <nav>
 
             <a href="#" class="active">
-
                 Dashboard
-
             </a>
 
             <a href="#">
-
                 Subscription
-
             </a>
 
             <a href="#">
-
                 Daily Payments
-
             </a>
 
             <a href="#">
-
                 Withdrawal
-
             </a>
 
             <a href="#">
-
                 Profile
-
             </a>
 
-            <a href="#"
-               id="logoutBtn">
-
+            <a href="#" id="logoutBtn">
                 Logout
-
             </a>
 
         </nav>
 
     </aside>
 
-
-
-
-
-    <!-- Main -->
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
 
     <main class="main-content">
+
+        <!-- Top Bar -->
 
         <header class="topbar">
 
             <h2 id="welcomeText">
+
                 Dashboard
+
             </h2>
 
         </header>
 
-
-
-
+        <!-- ==========================================
+             DASHBOARD CONTENT
+        =========================================== -->
 
         <section id="dashboardContent">
-            <section id="subscriptionSection" class="subscription-section">
 
-                <!-- ==========================================================
-                    ACTIVE SUBSCRIPTION
-                ========================================================== -->
+            <!-- ==========================================
+                 ACTIVE SUBSCRIPTION
+            =========================================== -->
 
-                <section id="activeSubscription" class="active-subscription" style="display:none;">
+            <section id="activeSubscription"
+                     class="active-subscription"
+                     style="display:none;">
 
-                    <h2>Your Active Subscription</h2>
+                <h2>Your Active Subscription</h2>
 
-                    <div class="subscription-info">
+                <div class="subscription-info">
 
-                        <div class="info-card">
+                    <div class="info-card">
 
-                            <h3>Plan</h3>
+                        <h3>Plan</h3>
 
-                            <p id="activePlan">-</p>
-
-                        </div>
-
-                        <div class="info-card">
-
-                            <h3>Current Day</h3>
-
-                            <p id="currentDay">-</p>
-
-                        </div>
-
-                        <div class="info-card">
-
-                            <h3>Today's Payment</h3>
-
-                            <p id="todayAmount">-</p>
-
-                        </div>
-
-                        <div class="info-card">
-
-                            <h3>Status</h3>
-
-                            <p id="paymentStatus">Pending</p>
-
-                        </div>
+                        <p id="activePlan">-</p>
 
                     </div>
 
-                    <button id="payNowBtn" class="primary-btn">
+                    <div class="info-card">
 
-                        Pay Now
+                        <h3>Current Day</h3>
 
-                    </button>
+                        <p id="currentDay">-</p>
 
-                </section>
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>Today's Payment</h3>
+
+                        <p id="todayAmount">-</p>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>Status</h3>
+
+                        <p id="paymentStatus">Pending</p>
+
+                    </div>
+
+                </div>
+
+                <button id="payNowBtn" class="primary-btn">
+
+                    Pay Now
+
+                </button>
+
+            </section>
+
+            <!-- ==========================================
+                 SUBSCRIPTION PLANS
+            =========================================== -->
+
+            <section id="subscriptionSection"
+                     class="subscription-section">
 
                 <h2>Choose Your Subscription Plan</h2>
 
                 <div class="plans-grid">
 
-                    <div class="plan-card" data-plan="7">
+                    <!-- 7 Days -->
+
+                    <div class="plan-card"
+                         data-plan="7">
 
                         <h3>7 Days</h3>
 
-                        <p id="plan7Amount">Loading...</p>
+                        <p id="plan7Amount">
+
+                            Loading...
+
+                        </p>
 
                         <button class="subscribe-btn">
+
                             Subscribe
+
                         </button>
 
                     </div>
 
-                    <div class="plan-card" data-plan="15">
+                    <!-- 15 Days -->
+
+                    <div class="plan-card"
+                         data-plan="15">
 
                         <h3>15 Days</h3>
 
-                        <p id="plan15Amount">Loading...</p>
+                        <p id="plan15Amount">
+
+                            Loading...
+
+                        </p>
 
                         <button class="subscribe-btn">
+
                             Subscribe
+
                         </button>
 
                     </div>
 
-                    <div class="plan-card" data-plan="30">
+                    <!-- 30 Days -->
+
+                    <div class="plan-card"
+                         data-plan="30">
 
                         <h3>30 Days</h3>
 
-                        <p id="plan30Amount">Loading...</p>
+                        <p id="plan30Amount">
+
+                            Loading...
+
+                        </p>
 
                         <button class="subscribe-btn">
+
                             Subscribe
+
                         </button>
 
                     </div>
@@ -201,8 +223,12 @@
 
 </div>
 
-<script type="module"
-        src="js/dashboard.js"></script>
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script type="module" src="js/dashboard.js"></script>
+
 <script type="module" src="js/subscription.js"></script>
 
 </body>
