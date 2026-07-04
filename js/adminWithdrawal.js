@@ -107,3 +107,68 @@ async function loadWithdrawals() {
     }
 
 }
+
+
+/* ==========================================================
+   APPROVE WITHDRAWAL
+========================================================== */
+
+function attachEvents() {
+
+    const buttons = document.querySelectorAll(".approve-withdraw");
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", async () => {
+
+            const withdrawalId = button.dataset.id;
+
+            try {
+
+                const withdrawalRef = doc(db, "withdrawals", withdrawalId);
+
+                const withdrawalSnap = await getDoc(withdrawalRef);
+
+                const withdrawal = withdrawalSnap.data();
+
+                // Update withdrawal document
+                await updateDoc(withdrawalRef, {
+
+                    status: "approved",
+
+                    approvedAt: serverTimestamp()
+
+                });
+
+                // Update user document
+                const userRef = doc(db, "users", withdrawal.uid);
+
+                await updateDoc(userRef, {
+
+                    "withdrawal.requested": false,
+
+                    "withdrawal.status": "completed",
+
+                    "withdrawal.completed": true
+
+                });
+
+                alert("Withdrawal Approved Successfully.");
+
+                loadWithdrawals();
+
+            }
+
+            catch(error){
+
+                console.error(error);
+
+                alert(error.message);
+
+            }
+
+        });
+
+    });
+
+}
