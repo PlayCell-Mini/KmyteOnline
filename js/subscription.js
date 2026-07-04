@@ -106,30 +106,58 @@ async function subscribePlan(e){
 
     }
 
-    await addDoc(
+    const settingsRef = doc(db, "settings", "app");
 
-        collection(db,"subscriptions"),
+    const settingsSnap = await getDoc(settingsRef);
 
-        {
+    const settings = settingsSnap.data();
 
-            uid:user.uid,
+    let amount = 0;
 
-            plan:plan,
+    switch(plan){
 
-            status:"active",
+        case 7:
+            amount = settings.plan7Amount;
+            break;
 
-            currentDay:1,
+        case 15:
+            amount = settings.plan15Amount;
+            break;
 
-            completed:false,
+        case 30:
+            amount = settings.plan30Amount;
+            break;
 
-            startDate:serverTimestamp(),
+    }
 
-            createdAt:serverTimestamp()
+    const subscriptionId = await createSubscription({
 
-        }
+        uid: user.uid,
+
+        plan: plan,
+
+        status: "active",
+
+        currentDay: 1,
+
+        completed: false,
+
+        startDate: serverTimestamp()
+
+    });
+
+    await generatePayments(
+
+        user.uid,
+
+        subscriptionId,
+
+        plan,
+
+        amount
 
     );
 
-    alert("Subscription Created Successfully!");
+    alert("Subscription Activated Successfully!");
 
 }
