@@ -20,15 +20,13 @@ async function loadPayments() {
 
     tbody.innerHTML = "";
 
-    const q = query(
+    const snapshot = await getDocs(collection(db, "payments"));
 
-        collection(db, "payments"),
+    console.log("Documents Found:", snapshot.size);
 
-        where("status", "==", "submitted")
-
-    );
-
-    const snapshot = await getDocs(q);
+    snapshot.forEach((doc) => {
+        console.log(doc.id, doc.data());
+    });
 
     console.log("Documents Found:", snapshot.size);
 
