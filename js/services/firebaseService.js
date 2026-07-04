@@ -8,7 +8,7 @@
    IMPORTS
 ========================================================== */
 
-import { db } from "./firebase.js";
+import { db } from "../firebase.js";
 
 import {
 
