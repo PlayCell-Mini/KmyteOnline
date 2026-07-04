@@ -2,7 +2,7 @@
    KMYTE Online
    Admin Withdrawal Approval
 ========================================================== */
-
+console.log("Admin Withdrawal JS Loaded");
 import { db } from "./firebase.js";
 
 import {
