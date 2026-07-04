@@ -29,8 +29,14 @@ async function loadWithdrawals() {
             where("status", "==", "pending")
 
         );
-
         const snapshot = await getDocs(q);
+
+        console.log("Withdraw Documents:", snapshot.size);
+
+        snapshot.forEach(doc => {
+            console.log(doc.id, doc.data());
+        });
+        
 
         if (snapshot.empty) {
 
