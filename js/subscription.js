@@ -57,3 +57,74 @@ buttons.forEach((button) => {
     button.addEventListener("click", subscribePlan);
 
 });
+
+
+/* ==========================================================
+   CREATE SUBSCRIPTION
+========================================================== */
+
+async function subscribePlan(e){
+
+    const user = auth.currentUser;
+
+    if(!user){
+
+        alert("Please login first.");
+
+        return;
+
+    }
+
+    const card = e.target.closest(".plan-card");
+
+    const plan = Number(card.dataset.plan);
+
+    // Check Existing Active Subscription
+
+    const q = query(
+
+        collection(db,"subscriptions"),
+
+        where("uid","==",user.uid),
+
+        where("status","==","active")
+
+    );
+
+    const snapshot = await getDocs(q);
+
+    if(!snapshot.empty){
+
+        alert("You already have an active subscription.");
+
+        return;
+
+    }
+
+    await addDoc(
+
+        collection(db,"subscriptions"),
+
+        {
+
+            uid:user.uid,
+
+            plan:plan,
+
+            status:"active",
+
+            currentDay:1,
+
+            completed:false,
+
+            startDate:serverTimestamp(),
+
+            createdAt:serverTimestamp()
+
+        }
+
+    );
+
+    alert("Subscription Created Successfully!");
+
+}
