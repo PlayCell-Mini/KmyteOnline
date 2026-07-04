@@ -25,9 +25,13 @@
             Loading...
         </h2>
 
+        <br>
+
         <label>Payment Method</label>
 
         <select id="paymentMethod">
+
+            <option value="">Select Payment Method</option>
 
             <option value="JazzCash">JazzCash</option>
 
@@ -37,6 +41,8 @@
 
         </select>
 
+        <br><br>
+
         <label>Transaction ID</label>
 
         <input
@@ -44,12 +50,7 @@
             id="transactionId"
             placeholder="Enter Transaction ID">
 
-        <label>Payment Screenshot</label>
-
-        <input
-            type="file"
-            id="paymentScreenshot"
-            accept="image/*">
+        <br><br>
 
         <button id="submitPaymentBtn">
 
@@ -63,7 +64,7 @@
 
 <script type="module"
         src="js/paymentSubmit.js"></script>
-
+        
 </body>
 
 </html>
