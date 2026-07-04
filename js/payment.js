@@ -68,7 +68,7 @@ async function loadTodayPayment(uid) {
 
         const payment = paymentDoc.data();
 
-        const paymentId = paymentDoc.id;
+        currentPaymentId = paymentDoc.id;
 
         document.getElementById("todayAmount").textContent =
             `PKR ${payment.amount}`;
