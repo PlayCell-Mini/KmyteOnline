@@ -137,6 +137,16 @@ function attachEvents(){
 
                 const payment = paymentSnap.data();
 
+                const userRef = doc(db, "users", payment.uid);
+
+                await updateDoc(userRef, {
+
+                    "wallet.totalPaid": increment(payment.amount),
+
+                    "wallet.totalPending": increment(payment.amount)
+
+                });
+
                 const nextQuery = query(
                     collection(db, "payments"),
                     where("subscriptionId", "==", payment.subscriptionId),
