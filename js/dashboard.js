@@ -161,7 +161,7 @@ async function loadSubscription(uid) {
     }
 
 
-    
+
     if (subscriptionSection)
         subscriptionSection.style.display = "none";
 
@@ -185,6 +185,26 @@ async function loadSubscription(uid) {
 
         currentDay.textContent =
             `${subscription.currentDay} / ${subscription.plan}`;
+
+    }
+
+    /* ==========================
+    PROGRESS BAR
+    ========================== */
+
+    const progressBar = document.getElementById("progressBar");
+
+    const progressText = document.getElementById("progressText");
+
+    if (progressBar && progressText) {
+
+        const progress =
+            (subscription.currentDay / subscription.plan) * 100;
+
+        progressBar.value = progress;
+
+        progressText.textContent =
+            `Day ${subscription.currentDay} of ${subscription.plan}`;
 
     }
 
