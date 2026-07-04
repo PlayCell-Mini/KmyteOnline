@@ -44,3 +44,16 @@ async function loadPlans(){
 }
 
 loadPlans();
+
+
+/* ==========================================================
+   SUBSCRIBE BUTTONS
+========================================================== */
+
+const buttons = document.querySelectorAll(".subscribe-btn");
+
+buttons.forEach((button) => {
+
+    button.addEventListener("click", subscribePlan);
+
+});
