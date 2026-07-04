@@ -39,6 +39,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     currentUser = user;
+    loadHistory(user.uid);
 
 });
 
@@ -142,6 +143,89 @@ async function submitWithdrawal(e) {
         console.error(error);
 
         alert(error.message);
+
+    }
+
+}
+
+
+/* ==========================================================
+   LOAD WITHDRAWAL HISTORY
+========================================================== */
+
+async function loadHistory(uid) {
+
+    const tbody = document.getElementById("withdrawHistoryBody");
+
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    try {
+
+        const q = query(
+
+            collection(db, "withdrawals"),
+
+            where("uid", "==", uid),
+
+            orderBy("createdAt", "desc")
+
+        );
+
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+
+            tbody.innerHTML = `
+
+                <tr>
+
+                    <td colspan="4">
+
+                        No withdrawal history.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+        snapshot.forEach(docSnap => {
+
+            const item = docSnap.data();
+
+            const date = item.createdAt
+                ? item.createdAt.toDate().toLocaleDateString()
+                : "-";
+
+            tbody.innerHTML += `
+
+                <tr>
+
+                    <td>PKR ${item.amount}</td>
+
+                    <td>${item.method}</td>
+
+                    <td>${item.status}</td>
+
+                    <td>${date}</td>
+
+                </tr>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
 
     }
 
