@@ -1,0 +1,82 @@
+/* ==========================================================
+   KMYTE Online
+   Payment Module
+   Version : 1.0.0
+========================================================== */
+
+/* ==========================================================
+   IMPORTS
+========================================================== */
+
+import { auth, db } from "./firebase.js";
+
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+    collection,
+    query,
+    where,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+/* ==========================================================
+   LOAD TODAY PAYMENT
+========================================================== */
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) return;
+
+    await loadTodayPayment(user.uid);
+
+});
+
+/* ==========================================================
+   FUNCTION
+========================================================== */
+
+async function loadTodayPayment(uid) {
+
+    try {
+
+        const paymentQuery = query(
+
+            collection(db, "payments"),
+
+            where("uid", "==", uid),
+            where("unlocked", "==", true),
+            where("paid", "==", false)
+
+        );
+
+        const snapshot = await getDocs(paymentQuery);
+
+        if (snapshot.empty) {
+
+            document.getElementById("todayAmount").textContent = "No Payment";
+
+            document.getElementById("paymentStatus").textContent = "-";
+
+            return;
+
+        }
+
+        const payment = snapshot.docs[0].data();
+
+        document.getElementById("todayAmount").textContent =
+            `PKR ${payment.amount}`;
+
+        document.getElementById("paymentStatus").textContent =
+            payment.status;
+
+        console.log("Today's Payment:", payment);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
+
+}
