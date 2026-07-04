@@ -61,7 +61,11 @@ async function loadTodayPayment(uid) {
 
         }
 
-        const payment = snapshot.docs[0].data();
+        const paymentDoc = snapshot.docs[0];
+
+        const payment = paymentDoc.data();
+
+        const paymentId = paymentDoc.id;
 
         document.getElementById("todayAmount").textContent =
             `PKR ${payment.amount}`;
