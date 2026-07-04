@@ -122,6 +122,8 @@ submitBtn.addEventListener("click", submitPayment);
 
 async function submitPayment() {
 
+    console.log("Submit Button Clicked");
+
     const method = paymentMethod.value;
 
     const trx = transactionId.value.trim();
