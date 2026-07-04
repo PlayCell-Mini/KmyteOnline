@@ -116,6 +116,8 @@ async function loadPayment() {
    SUBMIT PAYMENT
 ========================================================== */
 
+console.log(submitBtn);
+
 submitBtn.addEventListener("click", submitPayment);
 
 async function submitPayment() {
