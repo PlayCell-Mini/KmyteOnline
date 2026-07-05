@@ -14,6 +14,12 @@ import {
     updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+import {
+    EmailAuthProvider,
+    reauthenticateWithCredential,
+    updatePassword
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
 let currentUser = null;
 
 /* ==========================================================
@@ -129,5 +135,18 @@ async function updateProfile(e) {
         alert(error.message);
 
     }
+
+}
+
+
+/* ==========================================================
+   CHANGE PASSWORD
+========================================================== */
+
+const passwordForm = document.getElementById("passwordForm");
+
+if (passwordForm) {
+
+    passwordForm.addEventListener("submit", changePassword);
 
 }
