@@ -160,25 +160,15 @@ function attachEvents() {
                 CREATE NOTIFICATION
                 ========================================================== */
 
-                await addDoc(
+                await createNotification(
 
-                    collection(db, "notifications"),
+                    withdrawal.uid,
 
-                    {
+                    "Withdrawal Approved",
 
-                        uid: withdrawal.uid,
+                    `Your withdrawal request of PKR ${withdrawal.amount} has been approved.`,
 
-                        title: "Withdrawal Approved",
-
-                        message: `Your withdrawal request of PKR ${withdrawal.amount} has been approved.`,
-
-                        type: "withdrawal",
-
-                        read: false,
-
-                        createdAt: serverTimestamp()
-
-                    }
+                    "withdrawal"
 
                 );
 
