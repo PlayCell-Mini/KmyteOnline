@@ -3,6 +3,10 @@
    Notification Module
 ========================================================== */
 console.log("Notifications JS Loaded");
+console.log(btn);
+console.log(panel);
+console.log(list);
+console.log(badge);
 
 import { auth, db } from "./firebase.js";
 
