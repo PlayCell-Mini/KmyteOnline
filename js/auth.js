@@ -172,7 +172,9 @@ async function signupUser(e) {
 
                 phone,
 
-                referralCode,
+                referralCode: myReferralCode,
+
+                referredBy: referredBy || null,
 
                 role: "user",
 
