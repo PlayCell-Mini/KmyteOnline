@@ -159,6 +159,22 @@ async function subscribePlan(e){
 
     );
 
+    /* ==========================================================
+    CREATE NOTIFICATION
+    ========================================================== */
+
+    await createNotification(
+
+        user.uid,
+
+        "New Plan Activated",
+
+        `Your ${plan} Days subscription has been activated successfully.`,
+
+        "subscription"
+
+    );
+
     alert("Subscription Activated Successfully!");
 
 }
