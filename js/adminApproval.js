@@ -171,6 +171,33 @@ function attachEvents(){
                     );
 
                 }
+
+                /* ==========================================================
+                CREATE NOTIFICATION
+                ========================================================== */
+
+                await addDoc(
+
+                    collection(db, "notifications"),
+
+                    {
+
+                        uid: payment.uid,
+
+                        title: "Payment Approved",
+
+                        message: `Your Day ${payment.day} payment of PKR ${payment.amount} has been approved.`,
+
+                        type: "payment",
+
+                        read: false,
+
+                        createdAt: serverTimestamp()
+
+                    }
+
+                );
+
                 alert("Payment Approved Successfully.");
 
                 loadPayments();
