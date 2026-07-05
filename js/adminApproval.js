@@ -178,25 +178,15 @@ function attachEvents(){
                 CREATE NOTIFICATION
                 ========================================================== */
 
-                await addDoc(
+                await createNotification(
 
-                    collection(db, "notifications"),
+                    payment.uid,
 
-                    {
+                    "Payment Approved",
 
-                        uid: payment.uid,
+                    `Your Day ${payment.day} payment of PKR ${payment.amount} has been approved.`,
 
-                        title: "Payment Approved",
-
-                        message: `Your Day ${payment.day} payment of PKR ${payment.amount} has been approved.`,
-
-                        type: "payment",
-
-                        read: false,
-
-                        createdAt: serverTimestamp()
-
-                    }
+                    "payment"
 
                 );
 
