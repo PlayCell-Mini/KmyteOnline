@@ -141,6 +141,7 @@ function attachEvents() {
                     approvedAt: serverTimestamp()
 
                 });
+               
 
                 // Update user document
                 const userRef = doc(db, "users", withdrawal.uid);
