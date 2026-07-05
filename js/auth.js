@@ -156,12 +156,14 @@ async function signupUser(e) {
 
     }
 
+try {
+
     /* =====================
-    REFERRAL VALIDATION
+       REFERRAL VALIDATION
     ===================== */
 
     if (referredBy) {
-        console.log("Entered Referral:", referredBy);
+
         const referralQuery = query(
 
             collection(db, "users"),
@@ -171,7 +173,6 @@ async function signupUser(e) {
         );
 
         const referralSnapshot = await getDocs(referralQuery);
-        console.log("Matched Users:", referralSnapshot.size);
 
         if (referralSnapshot.empty) {
 
@@ -183,27 +184,23 @@ async function signupUser(e) {
 
     }
 
-    
+    setButtonLoading(button);
 
-    try {
+    /* =====================
+       FIREBASE AUTH
+    ===================== */
 
-        setButtonLoading(button);
+    const userCredential = await createUserWithEmailAndPassword(
 
-        /* =====================
-           FIREBASE AUTH
-        ===================== */
+        auth,
+        email,
+        password
 
-        const userCredential = await createUserWithEmailAndPassword(
+    );
 
-            auth,
-            email,
-            password
+    const user = userCredential.user;
 
-        );
-
-        const user = userCredential.user;
-
-        const myReferralCode = generateReferralCode();
+    const myReferralCode = generateReferralCode();
 
         /* =====================
            FIRESTORE USER
