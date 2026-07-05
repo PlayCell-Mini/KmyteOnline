@@ -187,6 +187,12 @@ function attachEvents(){
                         payment.subscriptionId
                     );
 
+                    // Get subscription details
+                    const subscriptionSnap = await getDoc(subscriptionRef);
+
+                    const subscription = subscriptionSnap.data();
+
+                    // Mark subscription completed
                     await updateDoc(subscriptionRef, {
 
                         status: "completed",
@@ -197,13 +203,14 @@ function attachEvents(){
 
                     });
 
+                    // Send notification
                     await createNotification(
 
                         payment.uid,
 
                         "Subscription Completed",
 
-                        `Congratulations! You have successfully completed your ${payment.day} Days subscription.`,
+                        `Congratulations! You have successfully completed your ${subscription.plan} Days subscription.`,
 
                         "subscription"
 
