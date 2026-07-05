@@ -182,6 +182,8 @@ async function signupUser(e) {
 
     }
 
+    
+
     try {
 
         setButtonLoading(button);
