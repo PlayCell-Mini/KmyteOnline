@@ -147,6 +147,8 @@ function attachEvents() {
 
             const uid = button.dataset.id;
 
+            selectedUserId = uid;
+
             const userSnap = await getDoc(
 
                 doc(db, "users", uid)
@@ -188,5 +190,83 @@ document.getElementById("closeModal").addEventListener("click", () => {
 
     document.getElementById("userModal").style.display = "none";
 
+
+});
+
+
+/* ==========================================================
+   SUSPEND USER
+========================================================== */
+
+document.getElementById("suspendUser").addEventListener("click", async () => {
+
+    if (!selectedUserId) return;
+
+    try {
+
+        await updateDoc(
+
+            doc(db, "users", selectedUserId),
+
+            {
+
+                status: "Suspended"
+
+            }
+
+        );
+
+        document.getElementById("viewStatus").textContent = "Suspended";
+
+        alert("User Suspended.");
+
+        loadUsers();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+});
+
+
+/* ==========================================================
+   ACTIVATE USER
+========================================================== */
+
+document.getElementById("activateUser").addEventListener("click", async () => {
+
+    if (!selectedUserId) return;
+
+    try {
+
+        await updateDoc(
+
+            doc(db, "users", selectedUserId),
+
+            {
+
+                status: "Active"
+
+            }
+
+        );
+
+        document.getElementById("viewStatus").textContent = "Active";
+
+        alert("User Activated.");
+
+        loadUsers();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
 
 });
