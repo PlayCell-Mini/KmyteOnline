@@ -19,6 +19,8 @@ const searchInput = document.getElementById("searchUser");
 
 let users = [];
 
+let selectedUserId = null;
+
 loadUsers();
 
 async function loadUsers() {
