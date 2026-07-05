@@ -169,7 +169,7 @@ async function subscribePlan(e){
 
         "New Plan Activated",
 
-        `Your ${plan} Days subscription has been activated successfully.`,
+        `Your ${plan} Days subscription has been activated successfully. Please reload dashboard.`,
 
         "subscription"
 
