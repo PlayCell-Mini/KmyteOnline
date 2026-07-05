@@ -175,6 +175,42 @@ function attachEvents(){
                 }
 
                 /* ==========================================================
+                CHECK SUBSCRIPTION COMPLETION
+                ========================================================== */
+
+                if (nextSnapshot.empty) {
+
+                    const subscriptionRef = doc(
+                        db,
+                        "subscriptions",
+                        payment.subscriptionId
+                    );
+
+                    await updateDoc(subscriptionRef, {
+
+                        status: "completed",
+
+                        completed: true,
+
+                        completedAt: serverTimestamp()
+
+                    });
+
+                    await createNotification(
+
+                        payment.uid,
+
+                        "Subscription Completed",
+
+                        `Congratulations! You have successfully completed your ${payment.day} Days subscription.`,
+
+                        "subscription"
+
+                    );
+
+                }
+
+                /* ==========================================================
                 CREATE NOTIFICATION
                 ========================================================== */
 
