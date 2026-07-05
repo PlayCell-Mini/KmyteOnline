@@ -89,19 +89,45 @@
 
         <label>New Password</label>
 
-        <input
-            type="password"
-            id="newPassword"
-            minlength="6"
-            required>
+        <div class="password-group">
+
+            <input
+                type="password"
+                id="newPassword"
+                minlength="6"
+                required>
+
+            <button
+                type="button"
+                class="toggle-password"
+                data-target="newPassword">
+
+                <i class="fa-solid fa-eye"></i>
+
+            </button>
+
+        </div>
 
         <label>Confirm New Password</label>
 
-        <input
-            type="password"
-            id="confirmPassword"
-            minlength="6"
-            required>
+        <div class="password-group">
+
+            <input
+                type="password"
+                id="confirmPassword"
+                minlength="6"
+                required>
+
+            <button
+                type="button"
+                class="toggle-password"
+                data-target="confirmPassword">
+
+                <i class="fa-solid fa-eye"></i>
+
+            </button>
+
+        </div>
 
         <button type="submit">
 
