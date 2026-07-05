@@ -57,6 +57,24 @@ if (loginForm) {
 }
 
 /* ==========================================================
+   GENERATE REFERRAL CODE
+========================================================== */
+
+function generateReferralCode() {
+
+    return "KMY" +
+
+        Math.random()
+
+            .toString(36)
+
+            .substring(2, 8)
+
+            .toUpperCase();
+
+}
+
+/* ==========================================================
    SIGNUP
 ========================================================== */
 
@@ -369,5 +387,5 @@ export function checkAuthState(callback){
     });
 
     
-    
+
 }
