@@ -101,6 +101,7 @@ function renderUsers(data) {
         `;
 
     });
+    attachEvents();
 
 }
 
