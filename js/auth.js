@@ -184,8 +184,7 @@ try {
 
     }
 
-    setButtonLoading(button);
-
+    setButtonLoading(button, "Signing Up...");
     /* =====================
        FIREBASE AUTH
     ===================== */
@@ -417,6 +416,6 @@ export function checkAuthState(callback){
     });
 
     
-    
+
 
 }
