@@ -222,15 +222,23 @@
 
                             </label>
 
-                            <input
+                            <div class="password-group">
 
-                                type="password"
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    required>
 
-                                id="confirmPassword"
+                                <button
+                                    type="button"
+                                    class="toggle-password"
+                                    data-target="confirmPassword">
 
-                                placeholder="Confirm Password"
+                                    <i class="fa-solid fa-eye"></i>
 
-                                required>
+                                </button>
+
+                            </div>
 
                         </div>
 
