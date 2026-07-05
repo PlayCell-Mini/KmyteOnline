@@ -2,18 +2,12 @@
    KMYTE Online
    Notification Module
 ========================================================== */
-console.log("Notifications JS Loaded");
-console.log(btn);
-console.log(panel);
-console.log(list);
-console.log(badge);
 
 import { auth, db } from "./firebase.js";
 
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
-
     collection,
     query,
     where,
@@ -21,16 +15,19 @@ import {
     onSnapshot,
     doc,
     updateDoc
-
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+console.log("Notifications JS Loaded");
+
 const btn = document.getElementById("notificationBtn");
-
 const panel = document.getElementById("notificationPanel");
-
 const list = document.getElementById("notificationList");
-
 const badge = document.getElementById("notificationCount");
+
+console.log(btn);
+console.log(panel);
+console.log(list);
+console.log(badge);
 
 /* ==========================================================
    TOGGLE PANEL
