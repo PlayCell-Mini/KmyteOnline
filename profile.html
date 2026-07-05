@@ -57,6 +57,43 @@
 
     </form>
 
+    <hr>
+
+    <h3>Change Password</h3>
+
+    <form id="passwordForm">
+
+        <label>Current Password</label>
+
+        <input
+            type="password"
+            id="currentPassword"
+            required>
+
+        <label>New Password</label>
+
+        <input
+            type="password"
+            id="newPassword"
+            minlength="6"
+            required>
+
+        <label>Confirm New Password</label>
+
+        <input
+            type="password"
+            id="confirmPassword"
+            minlength="6"
+            required>
+
+        <button type="submit">
+
+            Update Password
+
+        </button>
+
+    </form>
+
 </div>
 
 <script type="module" src="js/profile.js"></script>
