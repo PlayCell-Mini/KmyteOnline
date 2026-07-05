@@ -222,7 +222,7 @@ async function signupUser(e) {
 
                     totalPending: 0,
 
-                    withdrawAvailable: false
+                    withdrawAvailable: 0
 
                 },
 
