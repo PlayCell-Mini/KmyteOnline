@@ -210,9 +210,17 @@ async function changePassword(e) {
 
         );
 
-        alert("Password updated successfully.");
+        alert("Password updated successfully.\nPlease login again.");
 
         passwordForm.reset();
+
+        /* ==========================================================
+        LOGOUT AFTER PASSWORD CHANGE
+        ========================================================== */
+
+        await auth.signOut();
+
+        window.location.href = "login.html";
 
     }
 
