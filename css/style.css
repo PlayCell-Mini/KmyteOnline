@@ -1128,3 +1128,52 @@ footer{
     font-weight:600;
 
 }
+
+
+/* ==========================================
+   PASSWORD TOGGLE
+========================================== */
+
+.password-group{
+
+    position: relative;
+
+    width: 100%;
+
+}
+
+.password-group input{
+
+    width: 100%;
+
+    padding-right: 45px;
+
+}
+
+.toggle-password{
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 12px;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    color: #666;
+
+    font-size: 18px;
+
+}
+
+.toggle-password:hover{
+
+    color: #000;
+
+}
