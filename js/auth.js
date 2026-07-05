@@ -300,6 +300,20 @@ async function loginUser(e){
 
     const userData = userSnap.data();
 
+    /* ==========================================================
+    ACCOUNT STATUS
+    ========================================================== */
+
+    if (userData.status === "Suspended") {
+
+        await auth.signOut();
+
+        alert("Your account has been suspended. Please contact support.");
+
+        return;
+
+    }
+
     showMessage("Login Successful!");
 
     if (userData.role === "admin") {
