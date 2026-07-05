@@ -74,7 +74,7 @@ async function signupUser(e) {
 
     const confirmPassword = document.getElementById("confirmPassword").value;
 
-    const referralCode = document.getElementById("referral").value.trim();
+    const referredBy = document.getElementById("referral").value.trim();
 
     const terms = document.getElementById("terms").checked;
 
