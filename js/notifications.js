@@ -2,6 +2,7 @@
    KMYTE Online
    Notification Module
 ========================================================== */
+console.log("Notifications JS Loaded");
 
 import { auth, db } from "./firebase.js";
 
