@@ -161,7 +161,7 @@ async function signupUser(e) {
     ===================== */
 
     if (referredBy) {
-
+        console.log("Entered Referral:", referredBy);
         const referralQuery = query(
 
             collection(db, "users"),
@@ -171,6 +171,7 @@ async function signupUser(e) {
         );
 
         const referralSnapshot = await getDocs(referralQuery);
+        console.log("Matched Users:", referralSnapshot.size);
 
         if (referralSnapshot.empty) {
 
