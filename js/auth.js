@@ -152,6 +152,8 @@ async function signupUser(e) {
 
         const user = userCredential.user;
 
+        const myReferralCode = generateReferralCode();
+
         /* =====================
            FIRESTORE USER
         ===================== */
