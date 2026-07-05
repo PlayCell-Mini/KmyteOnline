@@ -228,7 +228,29 @@ async function changePassword(e) {
 
         console.error(error);
 
-        alert(error.message);
+        if(error.code==="auth/wrong-password"){
+
+            alert("Current password is incorrect.");
+
+        }
+
+        else if(error.code==="auth/weak-password"){
+
+            alert("Password should be at least 6 characters.");
+
+        }
+
+        else if(error.code==="auth/too-many-requests"){
+
+            alert("Too many attempts. Please try again later.");
+
+        }
+
+        else{
+
+            alert("Failed to update password.");
+
+        }
 
     }
 
