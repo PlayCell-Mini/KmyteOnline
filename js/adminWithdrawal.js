@@ -13,7 +13,9 @@ import {
     doc,
     updateDoc,
     getDoc,
-    serverTimestamp
+    addDoc,
+    serverTimestamp,
+    increment
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const tbody = document.getElementById("withdrawTableBody");
