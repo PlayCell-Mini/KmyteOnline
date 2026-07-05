@@ -98,6 +98,28 @@ function loadNotifications(uid) {
 
             const item = docSnap.data();
 
+            let icon = "🔔";
+
+            switch (item.type) {
+
+                case "payment":
+                    icon = "💰";
+                    break;
+
+                case "withdrawal":
+                    icon = "💸";
+                    break;
+
+                case "subscription":
+                    icon = "📦";
+                    break;
+
+                case "admin":
+                    icon = "👨‍💼";
+                    break;
+
+            }
+
             if (!item.read) unread++;
 
             const date = item.createdAt
