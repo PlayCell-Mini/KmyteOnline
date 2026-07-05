@@ -150,3 +150,78 @@ if (passwordForm) {
     passwordForm.addEventListener("submit", changePassword);
 
 }
+
+
+
+async function changePassword(e) {
+
+    e.preventDefault();
+
+    try {
+
+        const user = auth.currentUser;
+
+        const currentPassword =
+            document.getElementById("currentPassword").value;
+
+        const newPassword =
+            document.getElementById("newPassword").value;
+
+        const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+        if (newPassword !== confirmPassword) {
+
+            alert("New passwords do not match.");
+
+            return;
+
+        }
+
+        if (newPassword.length < 6) {
+
+            alert("Password must be at least 6 characters.");
+
+            return;
+
+        }
+
+        const credential = EmailAuthProvider.credential(
+
+            user.email,
+
+            currentPassword
+
+        );
+
+        await reauthenticateWithCredential(
+
+            user,
+
+            credential
+
+        );
+
+        await updatePassword(
+
+            user,
+
+            newPassword
+
+        );
+
+        alert("Password updated successfully.");
+
+        passwordForm.reset();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(error.message);
+
+    }
+
+}
