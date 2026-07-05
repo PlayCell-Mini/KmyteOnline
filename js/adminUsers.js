@@ -101,3 +101,26 @@ function renderUsers(data) {
     });
 
 }
+
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+searchInput.addEventListener("input", () => {
+
+    const keyword = searchInput.value.toLowerCase();
+
+    const filtered = users.filter(user =>
+
+        (user.fullName || "").toLowerCase().includes(keyword) ||
+
+        (user.email || "").toLowerCase().includes(keyword) ||
+
+        user.id.toLowerCase().includes(keyword)
+
+    );
+
+    renderUsers(filtered);
+
+});
