@@ -185,4 +185,5 @@ document.getElementById("closeModal").addEventListener("click", () => {
 
     document.getElementById("userModal").style.display = "none";
 
+    
 });
