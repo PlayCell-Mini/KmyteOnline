@@ -156,6 +156,32 @@ function attachEvents() {
 
                 });
 
+                /* ==========================================================
+                CREATE NOTIFICATION
+                ========================================================== */
+
+                await addDoc(
+
+                    collection(db, "notifications"),
+
+                    {
+
+                        uid: withdrawal.uid,
+
+                        title: "Withdrawal Approved",
+
+                        message: `Your withdrawal request of PKR ${withdrawal.amount} has been approved.`,
+
+                        type: "withdrawal",
+
+                        read: false,
+
+                        createdAt: serverTimestamp()
+
+                    }
+
+                );
+
                 alert("Withdrawal Approved Successfully.");
 
                 loadWithdrawals();
