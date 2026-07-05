@@ -128,29 +128,29 @@ function loadNotifications(uid) {
 
             list.innerHTML += `
 
-                <div
-                    class="notification-item"
-                    data-id="${docSnap.id}">
+            <div
+                class="notification-item ${item.read ? "" : "unread"}"
+                data-id="${docSnap.id}">
 
-                    <h4>
+                <h4>
 
-                        ${item.title}
+                    ${icon} ${item.title}
 
-                    </h4>
+                </h4>
 
-                    <p>
+                <p>
 
-                        ${item.message}
+                    ${item.message}
 
-                    </p>
+                </p>
 
-                    <small>
+                <small>
 
-                        ${date}
+                    ${date}
 
-                    </small>
+                </small>
 
-                </div>
+            </div>
 
             `;
 
