@@ -127,3 +127,62 @@ searchInput.addEventListener("input", () => {
     renderUsers(filtered);
 
 });
+
+
+
+/* ==========================================================
+   VIEW USER
+========================================================== */
+
+function attachEvents() {
+
+    const buttons = document.querySelectorAll(".view-user");
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", async () => {
+
+            const uid = button.dataset.id;
+
+            const userSnap = await getDoc(
+
+                doc(db, "users", uid)
+
+            );
+
+            if (!userSnap.exists()) return;
+
+            const user = userSnap.data();
+
+            document.getElementById("viewName").textContent =
+                user.fullName || "-";
+
+            document.getElementById("viewEmail").textContent =
+                user.email || "-";
+
+            document.getElementById("viewPhone").textContent =
+                user.phone || "-";
+
+            document.getElementById("viewWallet").textContent =
+                user.wallet?.totalPending || 0;
+
+            document.getElementById("viewPaid").textContent =
+                user.wallet?.totalPaid || 0;
+
+            document.getElementById("viewStatus").textContent =
+                user.status || "Active";
+
+            document.getElementById("userModal").style.display =
+                "block";
+
+        });
+
+    });
+
+}
+
+document.getElementById("closeModal").addEventListener("click", () => {
+
+    document.getElementById("userModal").style.display = "none";
+
+});
