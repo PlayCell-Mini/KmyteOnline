@@ -156,6 +156,32 @@ async function signupUser(e) {
 
     }
 
+    /* =====================
+    REFERRAL VALIDATION
+    ===================== */
+
+    if (referredBy) {
+
+        const referralQuery = query(
+
+            collection(db, "users"),
+
+            where("referralCode", "==", referredBy)
+
+        );
+
+        const referralSnapshot = await getDocs(referralQuery);
+
+        if (referralSnapshot.empty) {
+
+            showMessage("Invalid referral code.");
+
+            return;
+
+        }
+
+    }
+
     try {
 
         setButtonLoading(button);
