@@ -172,13 +172,13 @@ function attachEvents(){
 
                 await updateDoc(subscriptionRef, {
 
-                    currentDay: payment.day
+                    currentDay: payment.day + 1
 
                 });
 
                 await updateDoc(userRef, {
 
-                    "subscription.currentDay": payment.day,
+                    "subscription.currentDay": payment.day + 1,
 
                     "subscription.active": true,
 
