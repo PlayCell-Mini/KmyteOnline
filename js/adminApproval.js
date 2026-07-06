@@ -201,7 +201,96 @@ function attachEvents(){
 
                 if (payment.day === 1) {
 
-                    console.log("Checking referral reward...");
+                    const userSnap = await getDoc(userRef);
+                    const userData = userSnap.data();
+
+                    if (
+                        userData.referral?.referredBy &&
+                        !userData.referral.rewardPaid
+                    ) {
+
+                        // Reward amount from settings
+                        const settingsSnap = await getDoc(
+                            doc(db, "settings", "app")
+                        );
+
+                        const reward =
+                            settingsSnap.data().referralReward || 0;
+
+                        // Find referrer
+                        const referralQuery = query(
+                            collection(db, "users"),
+                            where(
+                                "referralCode",
+                                "==",
+                                userData.referral.referredBy
+                            )
+                        );
+
+                        const referralSnapshot =
+                            await getDocs(referralQuery);
+
+                        if (!referralSnapshot.empty) {
+
+                            const referrerDoc =
+                                referralSnapshot.docs[0];
+
+                            const referrerRef =
+                                doc(db, "users", referrerDoc.id);
+
+                            // Wallet reward
+                            await updateDoc(referrerRef, {
+
+                                "wallet.totalPaid":
+                                    increment(reward),
+
+                                "wallet.totalPending":
+                                    increment(reward)
+
+                            });
+
+                            // Referral history
+                            await addDoc(
+
+                                collection(db, "referrals"),
+
+                                {
+
+                                    referrerUid: referrerDoc.id,
+
+                                    referredUid: payment.uid,
+
+                                    reward,
+
+                                    createdAt: serverTimestamp()
+
+                                }
+
+                            );
+
+                            // Notification
+                            await createNotification(
+
+                                referrerDoc.id,
+
+                                "Referral Reward",
+
+                                `You earned PKR ${reward} because your referral completed Day 1 payment.`,
+
+                                "referral"
+
+                            );
+
+                            // Prevent duplicate reward
+                            await updateDoc(userRef, {
+
+                                "referral.rewardPaid": true
+
+                            });
+
+                        }
+
+                    }
 
                 }
 
