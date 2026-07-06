@@ -152,6 +152,16 @@ function attachEvents(){
 
                 });
 
+                /* ==========================================================
+                REFERRAL REWARD
+                ========================================================== */
+
+                if (payment.day === 1) {
+
+                    console.log("Checking referral reward...");
+
+                }
+
                 const nextQuery = query(
                     collection(db, "payments"),
                     where("subscriptionId", "==", payment.subscriptionId),
