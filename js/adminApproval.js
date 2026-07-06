@@ -10,16 +10,17 @@ import { db } from "./firebase.js";
 
 
 import {
-    collection,
-    query,
-    where,
-    getDocs,
-    doc,
-    updateDoc,
-    serverTimestamp,
-    getDoc,
-    increment,
-    addDoc
+collection,
+query,
+where,
+getDocs,
+doc,
+updateDoc,
+serverTimestamp,
+getDoc,
+addDoc,
+setDoc,
+increment
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const tbody = document.getElementById("paymentTableBody");
