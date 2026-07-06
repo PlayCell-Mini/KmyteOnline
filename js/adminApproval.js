@@ -250,6 +250,18 @@ function attachEvents(){
 
                     });
 
+                    await updateDoc(userRef, {
+
+                        "subscription.completed": true,
+
+                        "subscription.active": false,
+
+                        "subscription.currentDay": subscription.plan,
+
+                        "subscription.endDate": serverTimestamp()
+
+                    });
+
                     // Send notification
                     await createNotification(
 
