@@ -127,13 +127,15 @@ function attachEvents(){
 
                     {
 
-                        status:"approved",
+                        status: "approved",
 
-                        approved:true,
+                        approved: true,
 
-                        paid:true,
+                        paid: true,
 
-                        approvedAt:serverTimestamp()
+                        unlocked: false,
+
+                        approvedAt: serverTimestamp()
 
                     }
 
