@@ -172,23 +172,28 @@ function attachEvents(){
 
                 const subscription = subscriptionSnap.data();
 
-                await updateDoc(subscriptionRef, {
+                // Last payment nahi hai
+                if (payment.day < subscription.plan) {
 
-                    currentDay: payment.day + 1
+                    await updateDoc(subscriptionRef, {
 
-                });
+                        currentDay: payment.day + 1
 
-                await updateDoc(userRef, {
+                    });
 
-                    "subscription.currentDay": payment.day + 1,
+                    await updateDoc(userRef, {
 
-                    "subscription.active": true,
+                        "subscription.currentDay": payment.day + 1,
 
-                    "subscription.plan": subscription.plan,
+                        "subscription.active": true,
 
-                    "subscription.completed": false
+                        "subscription.plan": subscription.plan,
 
-                });                
+                        "subscription.completed": false
+
+                    });
+
+                }              
 
                 /* ==========================================================
                 REFERRAL REWARD
