@@ -153,6 +153,42 @@ function attachEvents(){
                 });
 
                 /* ==========================================================
+                UPDATE SUBSCRIPTION PROGRESS
+                ========================================================== */
+
+                const subscriptionRef = doc(
+
+                    db,
+
+                    "subscriptions",
+
+                    payment.subscriptionId
+
+                );
+
+                const subscriptionSnap = await getDoc(subscriptionRef);
+
+                const subscription = subscriptionSnap.data();
+
+                await updateDoc(subscriptionRef, {
+
+                    currentDay: payment.day
+
+                });
+
+                await updateDoc(userRef, {
+
+                    "subscription.currentDay": payment.day,
+
+                    "subscription.active": true,
+
+                    "subscription.plan": subscription.plan,
+
+                    "subscription.completed": false
+
+                });                
+
+                /* ==========================================================
                 REFERRAL REWARD
                 ========================================================== */
 
@@ -263,5 +299,5 @@ function attachEvents(){
 
     });
 
-    
+
 }
