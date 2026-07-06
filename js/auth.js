@@ -184,7 +184,7 @@ try {
 
     }
 
-    setButtonLoading(button, "Signing Up...");
+     setButtonLoading(button, "Signing Up...");
     /* =====================
        FIREBASE AUTH
     ===================== */
@@ -221,7 +221,7 @@ try {
 
                 referralCode: myReferralCode,
 
-                referredBy: referredBy || null,
+                
 
                 role: "user",
 
@@ -262,6 +262,14 @@ try {
                     requested: false,
 
                     completed: false
+
+                },
+
+                referral: {
+
+                    referredBy: referredBy || null,
+
+                    rewardPaid: false
 
                 }
 
